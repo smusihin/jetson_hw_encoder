@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.13)
+
+add_subdirectory(jetson_hw_encoder)
+add_subdirectory(nvidia_encode_sample)
+add_subdirectory(gst_appsink_encoder)
