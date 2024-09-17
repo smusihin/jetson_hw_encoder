@@ -23,7 +23,8 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} 
     ${GSTREAMER_VIDEO_LIBRARIES}
-    ${GSTREAMER_RTP_LIBRARIES}
+    ${GSTREAMER_PLUGINS_LIBRARIES}
+    ${GSTREAMER_APP_LIBRARIES}
     ${GSTREAMER_LIBRARIES}
     jetson_hw_encoder
     )

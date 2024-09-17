@@ -1,5 +1,6 @@
 #include "video_encode.h"
 
+#include <gst/app/gstappsink.h>
 #include <gst/gst.h>
 #include <iostream>
 
@@ -68,7 +69,16 @@ set_defaults(context_t * ctx)
 
 static GstFlowReturn processSample(GstElement* element, context_t* context)
 {
-  return GST_FLOW_OK;
+    /* get the sample from appsink */
+    if (auto* sinkSample = gst_app_sink_pull_sample(GST_APP_SINK(element)))
+    {
+        if (auto* frameBuffer = gst_sample_get_buffer(sinkSample))
+        {
+            //procNextFrame(frameBuffer, *context, false);
+        }
+    }
+
+    return GST_FLOW_OK;
 }
 
 int main (int argc, char *argv[])
